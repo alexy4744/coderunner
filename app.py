@@ -22,6 +22,13 @@ def languages():
 def run():
   json = request.get_json()
 
+  if not json:
+    return {
+      "error": {
+        "message": "Missing payload."
+      }
+    }, 400
+
   code = json.get("code")
 
   if not code:
